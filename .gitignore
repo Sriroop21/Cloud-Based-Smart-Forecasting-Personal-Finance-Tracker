@@ -1,0 +1,27 @@
+# --- SECURITY---
+serviceAccountKey.json
+._serviceAccountKey.json
+.env
+.env.local
+secrets.json
+
+# --- OS & Ghost Files ---
+.DS_Store
+Thumbs.db
+._*
+
+# --- Python (ml-model) ---
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# --- React (financetracker+prediction) ---
+node_modules/
+build/
+dist/
+.firebase/
+npm-debug.log*
+yarn-debug.log*
+package-lock.json # (Optional: Keep this if you want to lock versions, ignore if it causes conflicts)

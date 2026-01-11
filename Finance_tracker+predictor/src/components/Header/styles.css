@@ -1,0 +1,87 @@
+/* Navbar Container */
+.navbar {
+  background-color: var(--primary-purple);
+  padding: 0.5rem 1.5rem;
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* subtle bottom border */
+  backdrop-filter: blur(8px); /* reduced blur effect */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* subtle shadow */
+  transition: background-color 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+/* Hover Effect on Navbar */
+.navbar:hover {
+  background-color: rgba(104, 66, 239, 0.85); /* Slight darken on hover */
+}
+
+/* Navbar Title (h1) */
+h1 {
+  font-size: 1.3rem;
+  color: var(--white);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+/* Menu Button */
+.menu-btn {
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.15s ease-in-out;
+}
+
+.menu-btn:hover {
+  color: var(--primary-green); /* Change color on hover */
+  transform: scale(1.05); /* Slightly smaller scaling */
+}
+
+/* Active State for Menu Button */
+.menu-btn.active {
+  color: var(--primary-green);
+  text-decoration: underline; /* Adds an underline for active state */
+}
+
+/* Mobile Responsiveness: Hamburger Menu */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+  }
+
+  .menu-btn {
+    font-size: 1.5rem; /* Adjust font size on mobile */
+  }
+}
+
+/* Navbar Links - Additional styling for links if any */
+.navbar .links {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .links a {
+  color: var(--white);
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.2s ease, padding 0.15s ease;
+}
+
+.navbar .links a:hover {
+  color: var(--primary-green);
+  padding-bottom: 0.2rem; /* Adds a subtle underline effect */
+  border-bottom: 1px solid var(--primary-violet);
+}

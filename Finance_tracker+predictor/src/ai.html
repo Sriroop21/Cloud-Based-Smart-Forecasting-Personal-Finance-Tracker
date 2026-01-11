@@ -1,0 +1,439 @@
+
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate 365 - Your Personal Growth Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #007BFF; --success-color: #28a745; --warning-color: #ffc107; --danger-color: #dc3545;
+            --light-color: #f8f9fa; --dark-color: #343a40; --text-color: #333; --background-color: #FFFFFF;
+            --border-color: #dee2e6; --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; line-height: 1.6; background-color: var(--light-color); color: var(--text-color); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hidden { display: none !important; }
+
+        /* --- LANDING PAGE STYLES --- */
+        #landingPage .navbar { background: var(--background-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        #landingPage .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--primary-color); }
+        #landingPage nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2rem; }
+        #landingPage nav a { text-decoration: none; color: var(--text-color); font-weight: 600; transition: color 0.3s ease; }
+        #landingPage nav a:hover { color: var(--primary-color); }
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; font-size: 1rem; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: #0056b3; }
+        .btn-secondary { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+        .btn-secondary:hover { background: var(--primary-color); color: white; }
+        .hero { text-align: center; padding: 80px 0; background-color: var(--background-color); }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem auto; color: #6c757d; }
+        .hero-image { display: block; margin: 2rem auto 0 auto; max-width: 300px; border-radius: 20px; box-shadow: var(--shadow); }
+        .features-section, .about-section { padding: 60px 0; background-color: var(--background-color); }
+        .features-section h2, .about-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-card { background: var(--light-color); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow); }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-color); }
+        footer { background-color: var(--dark-color); color: white; text-align: center; padding: 2rem 0; }
+
+        /* --- DASHBOARD STYLES --- */
+        #dashboardPage { display: flex; }
+        .sidebar { width: 250px; background: var(--dark-color); color: white; min-height: 100vh; padding: 2rem 1rem; flex-shrink: 0; }
+        .sidebar h2 { text-align: center; margin-bottom: 2rem; }
+        .sidebar nav ul { list-style: none; padding: 0; }
+        .sidebar nav li a { display: block; color: white; padding: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 0.5rem; transition: background 0.3s; }
+        .sidebar nav li a:hover, .sidebar nav li a.active { background: #495057; }
+        #logoutBtn { width: 100%; margin-top: 2rem; background-color: var(--danger-color); }
+        .dashboard-content { flex-grow: 1; padding: 2rem; overflow-y: auto; }
+        .dashboard-header { margin-bottom: 2rem; }
+        .priority-banner { background-color: var(--warning-color); color: var(--dark-color); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; font-weight: 600; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .dashboard-card { background: var(--background-color); padding: 1.5rem; border-radius: 10px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        .card-header h3 { margin: 0; font-size: 1.2rem; }
+        .add-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
+        .card-content { flex-grow: 1; }
+        .habit-list, .food-log-list { list-style: none; padding: 0; }
+        .habit-list li { display: flex; align-items: center; padding: 0.75rem 0.5rem; cursor: pointer; border-radius: 5px; transition: background 0.2s; }
+        .habit-list li:hover { background: var(--light-color); }
+        .habit-list li.completed { text-decoration: line-through; color: #6c757d; }
+        .calorie-progress { width: 100%; background-color: var(--light-color); border-radius: 10px; margin: 1rem 0; }
+        .calorie-progress-bar { height: 20px; background-color: var(--success-color); border-radius: 10px; text-align: center; color: white; line-height: 20px; font-size: 0.8rem; transition: width 0.5s ease; }
+        #pomodoro-timer { font-size: 3rem; font-weight: 700; text-align: center; margin: 1rem 0; }
+        #ai-suggestion-content { min-height: 60px; font-style: italic; }
+
+        /* --- MODAL STYLES --- */
+        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background-color: #fff; margin: auto; padding: 2rem; border: 1px solid #888; width: 90%; max-width: 400px; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); position: relative; }
+        .close-btn { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-btn:hover, .close-btn:focus { color: black; }
+        .modal-content h2 { text-align: center; margin-bottom: 1.5rem; }
+        .modal-content form { display: flex; flex-direction: column; }
+        .modal-content input, .modal-content select { padding: 12px; margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; }
+        .modal-content label { margin-bottom: 0.5rem; font-weight: 600; }
+        .modal-content button { margin-top: 1rem; }
+        #loginError, #signupError { color: var(--danger-color); text-align: center; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <main id="landingPage">
+        <header class="navbar">
+            <div class="container">
+                <a href="#" class="logo">Elevate 365</a>
+                <nav><ul><li><a href="#features">Features</a></li></ul></nav>
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="btn btn-secondary">Login</button>
+                    <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </header>
+        <section class="hero">
+            <div class="container">
+                <h1>Integrate Your Growth. Elevate Your Life.</h1>
+                <p>The all-in-one platform for habit formation, health tracking, and productivity. Powered by AI to deliver a truly personalized experience.</p>
+                <img src="https://via.placeholder.com/300x600.png/f8f9fa/333333?text=Elevate+365+App" alt="Elevate 365 App on a smartphone" class="hero-image">
+            </div>
+        </section>
+        <footer id="contact"><div class="container"><p>&copy; 2025 Elevate 365 by Mounir Ahmed Shaik. All rights reserved.</p></div></footer>
+    </main>
+
+    <main id="dashboardPage" class="hidden">
+        <aside class="sidebar">
+            <h2>Elevate 365</h2>
+            <nav>
+                <ul><li><a href="#" class="active">Dashboard</a></li></ul>
+            </nav>
+            <button id="logoutBtn" class="btn btn-primary">Logout</button>
+        </aside>
+
+        <div class="dashboard-content">
+            <header class="dashboard-header">
+                <h1>Welcome, <span id="usernameDisplay">User</span>!</h1>
+                <p>Here’s your progress for today. Let's make it a great one! ✨</p>
+            </header>
+
+            <div class="priority-banner"><strong>High Priority:</strong> Your most important task for today!</div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header"><h3>🤖 AI Coach</h3></div>
+                    <div class="card-content">
+                        <p id="ai-suggestion-content">Click the button below to get a personalized suggestion!</p>
+                        <button id="generateSuggestionBtn" class="btn btn-secondary" style="width:100%;">Generate Suggestion</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Today's Habits</h3><button class="add-btn" id="addHabitBtnDashboard">+</button>
+                    </div>
+                    <div class="card-content">
+                        <ul id="habitList" class="habit-list">
+                            </ul>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Today's Nutrition</h3><button class="add-btn" id="addFoodBtn">+</button>
+                    </div>
+                    <div class="card-content">
+                        <div style="text-align: center;">
+                            <span id="caloriesConsumed" style="font-size: 2rem; font-weight: 700;">0</span> / 
+                            <span id="calorieGoal">2000</span> kcal
+                        </div>
+                        <div class="calorie-progress"><div id="calorieProgressBar" class="calorie-progress-bar" style="width: 0%;"></div></div>
+                        <ul id="foodLogList" class="food-log-list">
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header"><h3>🍅 Productivity Hub</h3></div>
+                    <div class="card-content">
+                        <div id="pomodoro-timer">25:00</div>
+                        <div style="display: flex; justify-content: space-around;">
+                            <button id="pomoStartBtn" class="btn btn-primary">Start</button>
+                            <button id="pomoPauseBtn" class="btn btn-secondary">Pause</button>
+                            <button id="pomoResetBtn" class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="loginModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>Welcome Back</h2><form id="loginForm"><div id="loginError" class="hidden">Invalid email or password.</div><input type="email" id="loginEmail" placeholder="Email Address" required><input type="password" id="loginPassword" placeholder="Password" required><button type="submit" class="btn btn-primary">Login</button></form></div></div>
+    <div id="signupModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>Join Elevate 365</h2><form id="signupForm"><div id="signupError" class="hidden">This email is already registered.</div><input type="text" id="signupName" placeholder="Full Name" required><input type="email" id="signupEmail" placeholder="Email Address" required><input type="password" id="signupPassword" placeholder="Create Password" required><button type="submit" class="btn btn-primary">Create Account</button></form></div></div>
+    <div id="addHabitModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>Add a New Habit</h2><form id="addHabitForm"><input type="text" id="habitNameInput" placeholder="e.g., Read for 20 minutes" required><button type="submit" class="btn btn-primary">Save Habit</button></form></div></div>
+    <div id="addFoodModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><h2>Log Your Meal</h2><form id="addFoodForm"><h4>How are calories calculated?</h4><p style="font-size:0.8em; margin-top:-1em; margin-bottom:1em;">Total Calories = (Protein g x 4) + (Carbs g x 4) + (Fat g x 9)</p><input type="text" id="foodNameInput" placeholder="Food item" required><input type="number" id="proteinInput" placeholder="Protein (g)" required min="0"><input type="number" id="carbsInput" placeholder="Carbs (g)" required min="0"><input type="number" id="fatInput" placeholder="Fat (g)" required min="0"><button type="submit" class="btn btn-primary">Add Food</button></form></div></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const landingPage = document.getElementById('landingPage');
+        const dashboardPage = document.getElementById('dashboardPage');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        let currentUserEmail = null;
+        let appData = {};
+
+        // --- Default App Data Structure ---
+        const defaultData = {
+            calorieGoal: 2000,
+            habits: [
+                { id: 1, text: "Drink 8 glasses of water", completed: true },
+                { id: 2, text: "Walk for 30 minutes", completed: false }
+            ],
+            foodLog: [
+                { name: "Oatmeal", calories: 350 },
+                { name: "Chicken Salad", calories: 450 }
+            ]
+        };
+
+        // --- UI Elements ---
+        const modals = {
+            login: document.getElementById('loginModal'), signup: document.getElementById('signupModal'),
+            addHabit: document.getElementById('addHabitModal'), addFood: document.getElementById('addFoodModal'),
+        };
+        const openModalBtns = {
+            login: document.getElementById('loginBtn'), signup: document.getElementById('signupBtn'),
+            addHabit: document.getElementById('addHabitBtnDashboard'), addFood: document.getElementById('addFoodBtn'),
+        };
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const addHabitForm = document.getElementById('addHabitForm');
+        const addFoodForm = document.getElementById('addFoodForm');
+        const habitList = document.getElementById('habitList');
+        const foodLogList = document.getElementById('foodLogList');
+        const caloriesConsumedEl = document.getElementById('caloriesConsumed');
+        const calorieGoalEl = document.getElementById('calorieGoal');
+        const calorieProgressBar = document.getElementById('calorieProgressBar');
+        const generateSuggestionBtn = document.getElementById('generateSuggestionBtn');
+        const aiSuggestionContent = document.getElementById('ai-suggestion-content');
+        const pomoTimerDisplay = document.getElementById('pomodoro-timer');
+        const [pomoStartBtn, pomoPauseBtn, pomoResetBtn] = [document.getElementById('pomoStartBtn'), document.getElementById('pomoPauseBtn'), document.getElementById('pomoResetBtn')];
+        const loginError = document.getElementById('loginError');
+        const signupError = document.getElementById('signupError');
+
+        // --- Core Functions: UI & Data Handling ---
+        const openModal = (modal) => modal.style.display = 'flex';
+        const closeModal = (modal) => {
+            modal.style.display = 'none';
+            loginError.classList.add('hidden');
+            signupError.classList.add('hidden');
+        };
+
+        const showDashboard = (username, email) => {
+            currentUserEmail = email;
+            loadData();
+            landingPage.classList.add('hidden');
+            dashboardPage.classList.remove('hidden');
+            usernameDisplay.textContent = username;
+            sessionStorage.setItem('loggedInUser', JSON.stringify({ name: username, email: email }));
+            renderDashboard();
+        };
+
+        const showLandingPage = () => {
+            currentUserEmail = null;
+            landingPage.classList.remove('hidden');
+            dashboardPage.classList.add('hidden');
+            sessionStorage.removeItem('loggedInUser');
+        };
+
+        const saveData = () => {
+            if (currentUserEmail) {
+                localStorage.setItem(`userData_${currentUserEmail}`, JSON.stringify(appData));
+            }
+        };
+
+        const loadData = () => {
+            const data = localStorage.getItem(`userData_${currentUserEmail}`);
+            appData = data ? JSON.parse(data) : JSON.parse(JSON.stringify(defaultData)); // Deep copy default
+        };
+        
+        // --- Render Functions ---
+        const renderDashboard = () => {
+            renderHabits();
+            renderNutrition();
+        };
+
+        const renderHabits = () => {
+            habitList.innerHTML = '';
+            if (appData.habits.length === 0) {
+                habitList.innerHTML = '<li>No habits added yet. Click "+" to start!</li>';
+                return;
+            }
+            appData.habits.forEach(habit => {
+                const li = document.createElement('li');
+                li.textContent = habit.text;
+                li.dataset.id = habit.id;
+                if (habit.completed) li.classList.add('completed');
+                li.onclick = () => toggleHabit(habit.id);
+                habitList.appendChild(li);
+            });
+        };
+
+        const renderNutrition = () => {
+            const totalCalories = appData.foodLog.reduce((sum, item) => sum + item.calories, 0);
+            caloriesConsumedEl.textContent = totalCalories;
+            calorieGoalEl.textContent = appData.calorieGoal;
+            
+            const progress = Math.min((totalCalories / appData.calorieGoal) * 100, 100);
+            calorieProgressBar.style.width = `${progress}%`;
+            calorieProgressBar.textContent = `${Math.round(progress)}%`;
+
+            foodLogList.innerHTML = '';
+            appData.foodLog.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item.name}</span><span>${item.calories} kcal</span>`;
+                foodLogList.appendChild(li);
+            });
+        };
+
+        // --- Event Handlers & Logic ---
+        const toggleHabit = (id) => {
+            const habit = appData.habits.find(h => h.id === id);
+            if (habit) {
+                habit.completed = !habit.completed;
+                saveData();
+                renderHabits();
+            }
+        };
+
+        addHabitForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const habitText = document.getElementById('habitNameInput').value;
+            if (!habitText) return;
+            const newHabit = {
+                id: Date.now(),
+                text: habitText,
+                completed: false,
+            };
+            appData.habits.push(newHabit);
+            saveData();
+            renderHabits();
+            addHabitForm.reset();
+            closeModal(modals.addHabit);
+        });
+
+        addFoodForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('foodNameInput').value;
+            const protein = parseFloat(document.getElementById('proteinInput').value);
+            const carbs = parseFloat(document.getElementById('carbsInput').value);
+            const fat = parseFloat(document.getElementById('fatInput').value);
+
+            if (!name || isNaN(protein) || isNaN(carbs) || isNaN(fat)) return;
+
+            const calories = (protein * 4) + (carbs * 4) + (fat * 9);
+            appData.foodLog.push({ name, calories: Math.round(calories) });
+            saveData();
+            renderNutrition();
+            addFoodForm.reset();
+            closeModal(modals.addFood);
+        });
+        
+        // --- AI Suggestions ---
+        const suggestions = [
+            "Feeling tired? A 10-minute walk can boost your energy more than a cup of coffee.",
+            "Try adding a serving of leafy greens to your next meal for a nutrient boost.",
+            "Feeling unproductive? Use the Pomodoro timer for a 25-minute focused work session.",
+            "Stay hydrated! Drinking enough water can improve focus and physical performance.",
+            "Consider swapping a sugary snack for a piece of fruit to stabilize your energy levels."
+        ];
+        generateSuggestionBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * suggestions.length);
+            aiSuggestionContent.textContent = suggestions[randomIndex];
+        });
+
+        // --- Pomodoro Timer ---
+        let pomoInterval;
+        let pomoTime = 25 * 60;
+        let isPomoPaused = true;
+
+        const updatePomoDisplay = () => {
+            const minutes = Math.floor(pomoTime / 60);
+            const seconds = pomoTime % 60;
+            pomoTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        };
+        pomoStartBtn.addEventListener('click', () => {
+            if (isPomoPaused) {
+                isPomoPaused = false;
+                pomoInterval = setInterval(() => {
+                    pomoTime--;
+                    updatePomoDisplay();
+                    if (pomoTime <= 0) {
+                        clearInterval(pomoInterval);
+                        alert("Pomodoro session finished!");
+                    }
+                }, 1000);
+            }
+        });
+        pomoPauseBtn.addEventListener('click', () => {
+            isPomoPaused = true;
+            clearInterval(pomoInterval);
+        });
+        pomoResetBtn.addEventListener('click', () => {
+            isPomoPaused = true;
+            clearInterval(pomoInterval);
+            pomoTime = 25 * 60;
+            updatePomoDisplay();
+        });
+
+        // --- Authentication & Initialization ---
+        openModalBtns.login.onclick = () => openModal(modals.login);
+        openModalBtns.signup.onclick = () => openModal(modals.signup);
+        if(openModalBtns.addHabit) openModalBtns.addHabit.onclick = () => openModal(modals.addHabit);
+        if(openModalBtns.addFood) openModalBtns.addFood.onclick = () => openModal(modals.addFood);
+        logoutBtn.onclick = showLandingPage;
+
+        document.querySelectorAll('.close-btn').forEach(btn => btn.onclick = () => closeModal(btn.closest('.modal')));
+        window.onclick = (event) => { if (event.target.classList.contains('modal')) closeModal(event.target); };
+        
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value.toLowerCase();
+            const password = document.getElementById('signupPassword').value;
+            let users = JSON.parse(localStorage.getItem('elevateUsers')) || [];
+            if (users.find(user => user.email === email)) {
+                signupError.classList.remove('hidden');
+            } else {
+                users.push({ name, email, password });
+                localStorage.setItem('elevateUsers', JSON.stringify(users));
+                closeModal(modals.signup);
+                openModal(modals.login);
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            let users = JSON.parse(localStorage.getItem('elevateUsers')) || [];
+            const foundUser = users.find(user => user.email === email && user.password === password);
+            if (foundUser) {
+                closeModal(modals.login);
+                showDashboard(foundUser.name, foundUser.email);
+            } else {
+                loginError.classList.remove('hidden');
+            }
+        });
+
+        // Check for logged-in user on page load
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (loggedInUser) {
+            showDashboard(loggedInUser.name, loggedInUser.email);
+        }
+    });
+    </script>
+</body>
+</html>
+
