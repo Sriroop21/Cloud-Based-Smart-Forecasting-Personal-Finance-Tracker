@@ -50,8 +50,8 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 ### Add Income & Expenses
 <p float="left">
-  <img src="DOCS/images/income_entry.png" width="49%" />
-  <img src="DOCS/images/expense_entry.png" width="49%" />
+  <img src="DOCS/images/income_entry.jpeg" width="49%" />
+  <img src="DOCS/images/expense_entry.jpeg" width="49%" />
 </p>
 
 *Easy-to-use forms for adding income and expenses*
@@ -65,8 +65,8 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 ### Cloud Infrastructure
 <p float="left">
-  <img src="DOCS/images/cloud_run.png" width="49%" />
-  <img src="DOCS/images/docker_build.png" width="49%" />
+  <img src="DOCS/images/cloud_run.jpeg" width="49%" />
+  <img src="DOCS/images/docker_build.jpeg" width="49%" />
 </p>
 
 *Google Cloud Run deployment with auto-scaling and Docker containerization*
