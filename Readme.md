@@ -33,19 +33,19 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 ## Screenshots
 
 ### User Authentication
-![Login Page](DOCS/images/login_screen.png)
+![Login Page](DOCS/images/login_screen.jpeg)
 *Secure login with Firebase Authentication*
 
 ### Dashboard
-![Dashboard](DOCS/images/dashboard.png)
+![Dashboard](DOCS/images/dashboard.jpeg)
 *Track your current balance, income, and expenses in real-time*
 
 ### Financial Analytics
-![Analytics](DOCS/images/analytics_panel.png)
+![Analytics](DOCS/images/analytics_panel.jpeg)
 *Visualize your spending trends with interactive charts*
 
 ### Transaction Management
-![Transactions](DOCS/images/data_export.png)
+![Transactions](DOCS/images/data_export.jpeg)
 *Manage all transactions with search, sort, and export features*
 
 ### Add Income & Expenses
@@ -57,10 +57,10 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 *Easy-to-use forms for adding income and expenses*
 
 ### SARIMA Forecasting
-![Forecast Metrics](DOCS/images/trend_analysis.png)
+![Forecast Metrics](DOCS/images/trend_analysis.jpeg)
 *View forecast summary with AIC, daily average, and training metrics*
 
-![Daily Predictions](DOCS/images/forecast_table.png)
+![Daily Predictions](DOCS/images/forecast_table.jpeg)
 *Detailed daily predictions with 95% confidence intervals*
 
 ### Cloud Infrastructure
@@ -304,7 +304,7 @@ firebase deploy --only hosting
 
 ### Research Paper
 
-**Full Technical Report:** [`DOCS/Cloud_Based_Smart_Forecasting_Personal_Finance_Tracker.pdf`](DOCS/Cloud_Based_Smart_Forecasting_Personal_Finance_Tracker.pdf)
+**Full Technical Report:** [`DOCS/Cloud_Based_Smart_Forecasting_Personal_Finance_Tracker.pdf`](DOCS/SMART_FINANCE_TRACKER.pdf)
 
 This comprehensive research paper (IEEE format) covers:
 - **System Architecture** - Complete technical design and data flow
