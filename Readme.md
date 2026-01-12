@@ -33,8 +33,6 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 ## Screenshots
 
-![Hero](DOCS/images/hero.jpeg)
-
 ### Dashboard
 ![Dashboard](DOCS/images/dashboard.jpeg)
 *Track your current balance, income, and expenses in real-time*
