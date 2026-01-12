@@ -11,7 +11,9 @@ An intelligent expense forecasting system powered by automated SARIMA modeling, 
 
 **Live Demo:** [https://expense-tracker-de11e.web.app/](https://expense-tracker-de11e.web.app/)
 
-**Forecast Feature:** [https://expense-tracker-de11e.web.app/forecast](https://expense-tracker-de11e.web.app/forecast)
+**Forecast Feature:** [https://expense-tracker-de11e.web.app/forecast](https://expense-tracker-de11e.web.app/forecast) (after logging in the account)
+
+![Hero](docs/images/hero.png)
 
 ---
 
@@ -32,41 +34,35 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 ## Screenshots
 
-### User Authentication
-![Login Page](DOCS/images/login_screen.jpeg)
-*Secure login with Firebase Authentication*
+![Hero](DOCS/images/hero.jpeg)
 
 ### Dashboard
 ![Dashboard](DOCS/images/dashboard.jpeg)
 *Track your current balance, income, and expenses in real-time*
 
-### Financial Analytics
-![Analytics](DOCS/images/analytics_panel.jpeg)
-*Visualize your spending trends with interactive charts*
+### SARIMA Forecasting
+![Forecast Metrics](DOCS/images/forecast-metrics.jpeg)
+*View forecast summary with AIC, daily average, and training metrics*
+
+![Daily Predictions](DOCS/images/forecast-table.jpeg)
+*Detailed daily predictions with 95% confidence intervals*
 
 ### Transaction Management
-![Transactions](DOCS/images/data_export.jpeg)
+![Transactions](DOCS/images/transactions.jpeg)
 *Manage all transactions with search, sort, and export features*
 
 ### Add Income & Expenses
 <p float="left">
-  <img src="DOCS/images/add_income.jpeg" width="49%" />
-  <img src="DOCS/images/add_expense.jpeg" width="49%" />
+  <img src="DOCS/images/add-income.jpeg" width="49%" />
+  <img src="DOCS/images/add-expense.jpeg" width="49%" />
 </p>
 
 *Easy-to-use forms for adding income and expenses*
 
-### SARIMA Forecasting
-![Forecast Metrics](DOCS/images/trend_analysis.jpeg)
-*View forecast summary with AIC, daily average, and training metrics*
-
-![Daily Predictions](DOCS/images/forecast_table.jpeg)
-*Detailed daily predictions with 95% confidence intervals*
-
 ### Cloud Infrastructure
 <p float="left">
-  <img src="DOCS/images/cloud_run.jpeg" width="49%" />
-  <img src="DOCS/images/docker_build.jpeg" width="49%" />
+  <img src="DOCS/images/cloud-run.jpeg" width="49%" />
+  <img src="DOCS/images/docker-build.jpeg" width="49%" />
 </p>
 
 *Google Cloud Run deployment with auto-scaling and Docker containerization*
@@ -79,7 +75,7 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 Our system uses **SARIMA (Seasonal Autoregressive Integrated Moving Average)** - a powerful time series forecasting model that learns from your past spending patterns to predict future expenses.
 
-**Explanation:**
+**Simple Explanation:**
 1. **Collects your expense history** - Gathers all your past transactions
 2. **Cleans the data** - Removes outliers and fills missing days
 3. **Finds patterns** - Identifies weekly spending trends (e.g., more spending on weekends)
@@ -245,16 +241,6 @@ Generate expense forecast.
 }
 ```
 
-### GET /health
-
-Check API status.
-
-### GET /
-
-Get API information.
-
----
-
 ## Model Performance
 
 ### Forecasting Accuracy
@@ -326,3 +312,4 @@ This comprehensive research paper (IEEE format) covers:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
