@@ -13,8 +13,7 @@ An intelligent expense forecasting system powered by automated SARIMA modeling, 
 
 **Forecast Feature:** [https://expense-tracker-de11e.web.app/forecast](https://expense-tracker-de11e.web.app/forecast) (after logging in the account)
 
-![Hero](docs/images/hero.png)
-
+![Hero](DOCS/images/hero.jpeg)
 ---
 
 ## Overview
