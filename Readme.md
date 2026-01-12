@@ -50,8 +50,8 @@ This project uses the **SARIMA (Seasonal Autoregressive Integrated Moving Averag
 
 ### Add Income & Expenses
 <p float="left">
-  <img src="DOCS/images/income_entry.jpeg" width="49%" />
-  <img src="DOCS/images/expense_entry.jpeg" width="49%" />
+  <img src="DOCS/images/add_income.jpeg" width="49%" />
+  <img src="DOCS/images/add_expense.jpeg" width="49%" />
 </p>
 
 *Easy-to-use forms for adding income and expenses*
